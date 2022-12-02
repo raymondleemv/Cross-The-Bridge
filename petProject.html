@@ -12,34 +12,46 @@
 <body>
     <main>
         <h1 id="game-title">Cross The Bridge</h1>
-        <div id="game-content">
-            <div class="passengers-container">
-                <!-- icon sources: https://www.flaticon.com/search?word=son&order_by=4 -->
-                <!-- https://www.flaticon.com/packs/family-life-70?word=family&style_id=15&family_id=3&group_id=1 -->                
-                <img alt="This is the father icon" src="images/father.png" class="passenger-icon father">
-                <img alt="This is the mother icon" src="images/mother.png" class="passenger-icon mother">
-                <img alt="This is the daughter icon" src="images/daughter.png" class="passenger-icon daughter">
-                <img alt="This is the son icon" src="images/son.png" class="passenger-icon son">
-                <img alt="This is the daughter icon" src="images/daughter.png" class="passenger-icon daughter">
-                <img alt="This is the son icon" src="images/son.png" class="passenger-icon son">
+        <div id="game-content-container">
+            <div id="game-content">
+                <div class="passengers-container">
+                    <!-- icon sources: https://www.flaticon.com/search?word=son&order_by=4 -->
+                    <!-- https://www.flaticon.com/packs/family-life-70?word=family&style_id=15&family_id=3&group_id=1 -->                
+                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
+                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
+                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
+                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
+                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
+                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
+                </div>
+                <div id="boat-container">
+                    <img alt="This is the daughter icon" src="images/daughter.png" class="passenger-icon" data-person="">
+                    <img alt="This is the son icon" src="images/son.png" class="passenger-icon" data-person="">
+                    <img alt="This is the boat icon" id="boat" src="images/boat.png">
+                </div>
+                <div class="passengers-container crossed-bridge">
+                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
+                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
+                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
+                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
+                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
+                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
+                </div>
             </div>
-            <div id="boat-container">
-                <img alt="This is the daughter icon" src="images/daughter.png" class="passenger-icon">
-                <img alt="This is the son icon" src="images/son.png" class="passenger-icon">
-                <img alt="This is the boat icon" id="boat" src="images/boat.png">
+            <div id="instructions" class="popup">
+                <p>1. The objective of the game is to help the policemen and criminals cross the bridge</p>
+                <p>2. If at any instance there are more criminals than the policemen, the criminals will fight the policemen and get away.</p>
             </div>
-            <div class="passengers-container">
-                <img alt="This is the father icon" src="images/father.png" class="passenger-icon father">
-                <img alt="This is the mother icon" src="images/mother.png" class="passenger-icon mother">
-                <img alt="This is the daughter icon" src="images/daughter.png" class="passenger-icon daughter">
-                <img alt="This is the son icon" src="images/son.png" class="passenger-icon son">
-                <img alt="This is the daughter icon" src="images/daughter.png" class="passenger-icon daughter">
-                <img alt="This is the son icon" src="images/son.png" class="passenger-icon son">
+            <div id="solution" class="popup"></div>
+            <div id="won" class="popup">
+                <p>You Won!</p>
+                <button id="play-again-btn">Play Again</button>
             </div>
+            <p id="error-message"></p>
         </div>
         <div id="game-buttons">
-            <button>How To Play</button>
-            <button>View Solution</button>
+            <button id="instructions-btn" data-for="instructions">How To Play</button>
+            <button id="solution-btn" data-for="solution">View Solution</button>
             <button id="move-boat-btn">Move Boat</button>
         </div>
     </main>
