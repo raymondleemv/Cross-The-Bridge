@@ -17,7 +17,7 @@ function hidden(visibility) {
 function showPopup(id) {
     $(".popup").not("#" + id).hide();
     $("#" + id).toggle();
-    if ($(".popup").filter(hidden(true)).length === 3) {
+    if ($(".popup").filter(hidden(true)).length === $(".popup").length) {
         $("#game-content").removeClass("unclickable");
     } else {
         $("#game-content").addClass("unclickable");
@@ -59,7 +59,6 @@ $(document).ready(function() {
         if ($(this).parent().is("#boat-container")) {
             if ($("#boat-container").hasClass("cross-bridge")) {
                 $(crossedBridgePassengers.parent().find("[data-person=" + $(this).attr("data-person") + "]").filter(hidden(true))[0]).show(); 
-                // findPassengers(crossedBridgePassengersContainer, $(this).attr("data-person"))
             }
             else {
                 $(passengers.parent().find("[data-person=" + $(this).attr("data-person") + "]").filter(hidden(true))[0]).show();
@@ -131,10 +130,16 @@ $(document).ready(function() {
 
     $("#instructions-btn").click(function() {
         showPopup($(this).attr("data-for"));
+        $("#game-buttons").children(":not(#instructions-btn)").toggleClass("unclickable");
     });
 
     $("#play-again-btn").click(function() {
         reset();
+    });
+
+    $(".close").click(function() {
+        showPopup($(this).parent().id);
+        $("#game-buttons").children(":not(#instructions-btn)").toggleClass("unclickable");
     });
 
     $("#solution-btn").click(async function() {

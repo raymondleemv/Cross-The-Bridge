@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Asap&family=Cinzel&family=Playfair+Display&display=swap');
+/********************************************************
+ * TABLE OF CONTENTS
+ * =================
+ * 1. GENERAL
+ * 2. MAIN
+ ********************************************************/
+
+/* 1. GENERAL */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -23,6 +31,10 @@ body {
     /* color: white; */
 }
 
+.can-close {
+    position: relative;
+}
+
 button {
     padding: 16px;
     border: 1px solid #979DAC;
@@ -31,6 +43,38 @@ button {
     color: #979DAC;
     font: 16px Asap;
     transition: 0.3s;
+    cursor: pointer;
+}
+
+.close {
+    --height: 16px;
+    position: absolute;
+    width: var(--height, 16px);
+    height: var(--height, 16px);
+    top: 0;
+    right: 16px;
+    cursor: pointer;
+}
+
+.close::before, .close::after{
+    content: "";
+    position: absolute;
+    right: calc(var(--height, 16px) / 2);
+    width: 2px;
+    height: var(--height, 16px);
+    background-color: white;
+}
+
+.close:hover::before, .close:hover::after {
+    background-color: #979DAC;
+}
+
+.close::before {
+    transform: rotate(45deg);
+}
+
+.close::after {
+    transform: rotate(-45deg);
 }
 
 button:hover {
@@ -38,6 +82,18 @@ button:hover {
     border-color: white;
 }
 
+.title {
+    color: white;
+    text-align: center;
+    font: 32px Cinzel;
+}
+
+.unclickable {
+    opacity: 25%;
+    pointer-events: none;
+}
+
+/* 2. MAIN */
 main {
     width: 100%;
     background-color: #1A273F;
@@ -45,17 +101,14 @@ main {
     padding: 16px;
 }
 
-#game-title {
-    color: white;
-    text-align: center;
-    font: 32px Cinzel;
+.popup > *:not(:first-child) {
+    margin-top: 16px;
 }
 
 #game-content {
     display: grid;
     grid-row: 1;
     grid-column: 1;
-    /* grid-template-columns: repeat(3, 1fr); */
     grid-template-columns: calc(var(--passenger-width) * 3) auto calc(var(--passenger-width) * 3);
 }
 
@@ -126,11 +179,6 @@ main {
     padding: 16px;
     border-radius: 10px;
     z-index: 2;
-}
-
-.unclickable {
-    opacity: 25%;
-    pointer-events: none;
 }
 
 #won {
