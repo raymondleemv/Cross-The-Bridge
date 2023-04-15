@@ -8,183 +8,204 @@
 
 /* 1. GENERAL */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 :root {
-    --boat-width: calc(var(--passenger-width) * 2);
-    --passenger-width: 100px;
-    --passenger-boat-overlap: 80px;
+	--boat-width: calc(var(--passenger-width) * 2);
+	--passenger-width: 100px;
+	--passenger-boat-overlap: 80px;
 }
 
 body {
-    background-color: #33415C;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 40px;
-    overflow: hidden;
-    font: 16px Asap;
+	background-color: #33415c;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	padding: 40px;
+	overflow: hidden;
+	font: 16px Asap;
 }
 
 .can-close {
-    position: relative;
+	position: relative;
 }
 
 button {
-    padding: 16px;
-    border: 1px solid #979DAC;
-    border-radius: 10px;
-    background-color: transparent;
-    color: #979DAC;
-    font: 16px Asap;
-    transition: 0.3s;
-    cursor: pointer;
+	border: none;
+	outline: none;
+	background-color: transparent;
+}
+
+.button {
+	padding: 16px;
+	border: 1px solid #979dac;
+	border-radius: 10px;
+	background-color: transparent;
+	color: #979dac;
+	font: 16px Asap;
+	transition: 0.3s;
+	cursor: pointer;
 }
 
 .close {
-    --height: 16px;
-    position: absolute;
-    width: var(--height, 16px);
-    height: var(--height, 16px);
-    top: 0;
-    right: 16px;
-    cursor: pointer;
+	--height: 16px;
+	position: absolute;
+	width: var(--height, 16px);
+	height: var(--height, 16px);
+	top: 0;
+	right: 16px;
+	cursor: pointer;
 }
 
-.close::before, .close::after{
-    content: "";
-    position: absolute;
-    right: calc(var(--height, 16px) / 2);
-    width: 2px;
-    height: var(--height, 16px);
-    background-color: white;
+.close::before,
+.close::after {
+	content: '';
+	position: absolute;
+	right: calc(var(--height, 16px) / 2);
+	width: 2px;
+	height: var(--height, 16px);
+	background-color: white;
 }
 
-.close:hover::before, .close:hover::after {
-    background-color: #979DAC;
+.close:hover::before,
+.close:hover::after {
+	background-color: #979dac;
 }
 
 .close::before {
-    transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 
 .close::after {
-    transform: rotate(-45deg);
+	transform: rotate(-45deg);
 }
 
-button:hover {
-    color: white;
-    border-color: white;
+.button:hover {
+	color: white;
+	border-color: white;
 }
 
 .title {
-    color: white;
-    text-align: center;
-    font: 32px Cinzel;
+	color: white;
+	text-align: center;
+	font: 32px Cinzel;
 }
 
 .unclickable {
-    opacity: 25%;
-    pointer-events: none;
+	opacity: 25%;
+	pointer-events: none;
 }
 
 /* 2. MAIN */
 main {
-    width: 100%;
-    background-color: #1A273F;
-    border-radius: 10px;
-    padding: 16px;
+	width: 100%;
+	background-color: #1a273f;
+	border-radius: 10px;
+	padding: 16px;
 }
 
 .popup > *:not(:first-child) {
-    margin-top: 16px;
+	margin-top: 16px;
 }
 
 #game-content {
-    display: grid;
-    grid-row: 1;
-    grid-column: 1;
-    grid-template-columns: calc(var(--passenger-width) * 3) auto calc(var(--passenger-width) * 3);
+	display: grid;
+	grid-row: 1;
+	grid-column: 1;
+	grid-template-columns: calc(var(--passenger-width) * 3) auto calc(
+			var(--passenger-width) * 3
+		);
 }
 
 .passengers-container {
-    display: grid;
-    grid-template-columns: repeat(3, var(--passenger-width, 100px));
-    grid-template-rows: repeat(2, 1fr);
+	display: grid;
+	grid-template-columns: repeat(3, var(--passenger-width, 100px));
+	grid-template-rows: repeat(2, 1fr);
+}
+
+.passenger-button {
+	width: var(--passenger-width, 100px);
 }
 
 .passenger-icon {
-    width: var(--passenger-width, 100px);
+	pointer-events: none;
+	width: 100%;
 }
 
-#game-buttons, #game-content-container {
-    margin-top: 16px;
+#game-buttons,
+#game-content-container {
+	margin-top: 16px;
 }
 
 #boat-container {
-    display: grid;
-    grid-template-columns: repeat(2, var(--passenger-width));
-    grid-template-rows: calc(var(--passenger-width) - var(--passenger-boat-overlap)) var(--passenger-boat-overlap) calc(var(--boat-width) - var(--passenger-boat-overlap));
-    transition: 2s;
+	display: grid;
+	grid-template-columns: repeat(2, var(--passenger-width));
+	grid-template-rows:
+		calc(var(--passenger-width) - var(--passenger-boat-overlap))
+		var(--passenger-boat-overlap) calc(var(--boat-width) -
+				var(--passenger-boat-overlap));
+	transition: 2s;
 }
 
-#boat-container .passenger-icon {
-    grid-row: 1 / 3;
-    z-index: 2;
+#boat-container .passenger-button {
+	grid-row: 1 / 3;
+	z-index: 2;
 }
 
-#boat-container .passenger-icon:nth-child(1) {
-    grid-column: 1;
+#boat-container .passenger-button:nth-child(1) {
+	grid-column: 1;
 }
 
-#boat-container .passenger-icon:nth-child(2) {
-    grid-column: 2;
+#boat-container .passenger-button:nth-child(2) {
+	grid-column: 2;
 }
 
 #boat {
-    width: var(--boat-width, 200px);
-    grid-row: 2 / 4;
-    grid-column: 1 / 3;
+	width: var(--boat-width, 200px);
+	grid-row: 2 / 4;
+	grid-column: 1 / 3;
 }
 
 /* translate the container instead so that translateX 100% is relative to container */
 /* https://stackoverflow.com/questions/21557476/how-to-use-transformtranslatex-to-move-a-child-element-horizontally-100-across */
 .cross-bridge {
-    transform: translateX(calc(100% - var(--boat-width, 200px)));
+	transform: translateX(calc(100% - var(--boat-width, 200px)));
 }
 
-.passengers-container.crossed-bridge{
-    z-index: 1;
+.passengers-container.crossed-bridge {
+	z-index: 1;
 }
 
 #error-message {
-    color: #979DAC;
+	color: #979dac;
 }
 
 #game-content-container {
-    display: grid;
+	display: grid;
 }
 
-#instructions, #solution, #won {
-    grid-row: 1;
-    grid-column: 1;
-    justify-self: center;
-    background-color: #33415C;
-    color: white;
-    padding: 16px;
-    border-radius: 10px;
-    z-index: 2;
+#instructions,
+#solution,
+#won {
+	grid-row: 1;
+	grid-column: 1;
+	justify-self: center;
+	background-color: #33415c;
+	color: white;
+	padding: 16px;
+	border-radius: 10px;
+	z-index: 2;
 }
 
 #won {
-    display: grid;
-    place-items: center;
+	display: grid;
+	place-items: center;
 }
 
 #won p {
-    font: 32px Cinzel;
+	font: 32px Cinzel;
 }

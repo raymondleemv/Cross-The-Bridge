@@ -1,60 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script src="js/jquery.js"></script>
-    <script src="js/petProject.js"></script>
-    <title>Cross The Bridge</title>
-</head>
-<body>
-    <main>
-        <h1 class="title">Cross The Bridge</h1>
-        <div id="game-content-container">
-            <div id="game-content">
-                <div class="passengers-container">
-                    <!-- icon sources: flaticon.com -->
-                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
-                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
-                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
-                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
-                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
-                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
-                </div>
-                <div id="boat-container">
-                    <img class="passenger-icon" data-person="">
-                    <img class="passenger-icon" data-person="">
-                    <img alt="This is the boat icon" id="boat" src="images/boat.png">
-                </div>
-                <div class="passengers-container crossed-bridge">
-                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
-                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
-                    <img alt="This is the policeman icon" src="images/policeman.png" class="passenger-icon" data-person="policeman">
-                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
-                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
-                    <img alt="This is the criminal icon" src="images/criminal.png" class="passenger-icon" data-person="criminal">
-                </div>
-            </div>
-            <div id="instructions" class="popup can-close">
-                <h2 class="title">How To Play</h2>
-                <p>1. The objective of the game is to help the policemen and criminals cross the bridge</p>
-                <p>2. If at any instance there are more criminals than the policemen, the criminals will beat up the policemen and you lose.</p>
-                <p>3. It is assumed that criminals will not run away even in the absence of policemen.</p>
-                <div class="close"></div>
-            </div>
-            <div id="won" class="popup">
-                <h2 class="title">You Won!</h2>
-                <button id="play-again-btn">Play Again</button>
-            </div>
-            <p id="error-message"></p>
-        </div>
-        <div id="game-buttons">
-            <button id="instructions-btn" data-for="instructions">How To Play</button>
-            <button id="solution-btn" data-for="solution">View Solution</button>
-            <button id="move-boat-btn">Move Boat</button>
-        </div>
-    </main>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/petProject.js"></script>
+		<title>Cross The Bridge</title>
+	</head>
+	<body>
+		<main>
+			<h1 class="title">Cross The Bridge</h1>
+			<div id="game-content-container">
+				<div id="game-content">
+					<div class="passengers-container">
+						<!-- icon sources: flaticon.com -->
+						<button class="passenger-button" data-person="policeman">
+							<img
+								alt="This is the policeman icon"
+								src="images/policeman.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="policeman">
+							<img
+								alt="This is the policeman icon"
+								src="images/policeman.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="policeman">
+							<img
+								alt="This is the policeman icon"
+								src="images/policeman.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="criminal">
+							<img
+								alt="This is the criminal icon"
+								src="images/criminal.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="criminal">
+							<img
+								alt="This is the criminal icon"
+								src="images/criminal.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="criminal">
+							<img
+								alt="This is the criminal icon"
+								src="images/criminal.png"
+								class="passenger-icon"
+							/>
+						</button>
+					</div>
+					<div id="boat-container">
+						<button class="passenger-button" data-person="">
+							<img class="passenger-icon" />
+						</button>
+						<button class="passenger-button" data-person="">
+							<img class="passenger-icon" />
+						</button>
+						<img alt="This is the boat icon" id="boat" src="images/boat.png" />
+					</div>
+					<div class="passengers-container crossed-bridge">
+						<button class="passenger-button" data-person="policeman">
+							<img
+								alt="This is the policeman who crossed the bridge icon"
+								src="images/policeman.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="policeman">
+							<img
+								alt="This is the policeman who crossed the bridge icon"
+								src="images/policeman.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="policeman">
+							<img
+								alt="This is the policeman who crossed the bridge icon"
+								src="images/policeman.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="criminal">
+							<img
+								alt="This is the criminal who crossed the bridge icon"
+								src="images/criminal.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="criminal">
+							<img
+								alt="This is the criminal who crossed the bridge icon"
+								src="images/criminal.png"
+								class="passenger-icon"
+							/>
+						</button>
+						<button class="passenger-button" data-person="criminal">
+							<img
+								alt="This is the criminal who crossed the bridge icon"
+								src="images/criminal.png"
+								class="passenger-icon"
+							/>
+						</button>
+					</div>
+				</div>
+				<div id="instructions" class="popup can-close" tabindex="0">
+					<h2 class="title">How To Play</h2>
+					<p>
+						1. The objective of the game is to help the policemen and criminals
+						cross the bridge
+					</p>
+					<p>
+						2. If at any instance there are more criminals than the policemen,
+						the criminals will beat up the policemen and you lose.
+					</p>
+					<p>
+						3. It is assumed that criminals will not run away even in the
+						absence of policemen.
+					</p>
+					<button
+						class="close"
+						aria-label="This is the close button for the instructions modal"
+					></button>
+				</div>
+				<div id="won" class="popup" tabindex="0">
+					<h2 class="title">You Won!</h2>
+					<button class="button" id="play-again-btn">Play Again</button>
+				</div>
+				<p id="error-message" tabindex="0"></p>
+			</div>
+			<div id="game-buttons">
+				<button class="button" id="instructions-btn" data-for="instructions">
+					How To Play
+				</button>
+				<button class="button" id="solution-btn" data-for="solution">
+					View Solution
+				</button>
+				<button class="button" id="move-boat-btn">Move Boat</button>
+			</div>
+		</main>
+	</body>
 </html>
